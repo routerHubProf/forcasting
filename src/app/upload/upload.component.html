@@ -1,0 +1,65 @@
+<!-- <app-sidebar></app-sidebar> -->
+<div class="head">
+    <div class="upload">
+
+        <h5>Upload Details</h5> <hr>
+        <input type="text" disabled class="fileNameFill"  value={{this.fileName}}>
+        <input type="file" id ="file" class="file" (change)="getFileInfo($event)" style="display: none; ">
+        <label for="file">Browse</label>
+        <button (click) = "upload()">Upload</button>
+    </div>
+
+    <div class="logs">
+        <h5>Logs</h5> <hr>
+        <!-- <div class="example-header">
+           
+        </div> -->
+        <div class="upload-container mat-elevation-z8">
+
+            <div class="tableHeader">
+              <input  (keyup)="applyFilter($event)" placeholder="Search">
+              <mat-paginator [pageSizeOptions]="[20,50,100]"></mat-paginator>
+            </div>
+       
+           
+
+            <mat-table [dataSource]="dataSource" matSort>
+          
+              
+              <ng-container matColumnDef="path">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Path  </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.path}} </mat-cell>
+              </ng-container>
+          
+             
+              <ng-container matColumnDef="fileName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> File Name </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.fileName}}% </mat-cell>
+              </ng-container>
+          
+              <!-- Name Column -->
+              <ng-container matColumnDef="modelName">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Model Name </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.modelName}} </mat-cell>
+              </ng-container>
+          
+              <!-- Color Column -->
+              <ng-container matColumnDef="uploadDateTime">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Upload Date/Time </mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.uploadDateTime}} </mat-cell>
+              </ng-container>
+          
+              <ng-container matColumnDef="data">
+                <mat-header-cell *matHeaderCellDef mat-sort-header></mat-header-cell>
+                <mat-cell *matCellDef="let row"> {{row.data}} </mat-cell>
+              </ng-container>
+          
+              <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+              <mat-row *matRowDef="let row; columns: displayedColumns;">
+              </mat-row>
+            </mat-table>
+          
+          </div>
+
+    </div>
+</div>
