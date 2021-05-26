@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router , RouterModule} from '@angular/router';
+import { Router , RouterModule,ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,10 +14,10 @@ export class SidebarComponent implements OnInit {
   newScenario ='';
   compareScenario ='';
   url=''
-  constructor(private router: Router) { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.url = this.router.url;
+    this.url = '/'+(this.router.url).split('/').pop();
     console.log(this.url);
     this.upload ='';
     this.baseScenario = '';
